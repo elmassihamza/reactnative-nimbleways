@@ -21,6 +21,8 @@ declare module 'styled-components' {
     colors: {
       primary: string;
       secondary: string;
+      border: string;
+      white: string;
     };
   }
 }

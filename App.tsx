@@ -16,7 +16,7 @@ import {Colors} from 'react-native/Libraries/NewAppScreen';
 import assets from './src/assets';
 import {ThemeProvider} from 'styled-components';
 import {defaultTheme} from './src/themes/default';
-import Layout from './src/components/Layout';
+import {Button, Layout, TextInput} from './src/components';
 
 declare const global: {HermesInternal: null | {}};
 
@@ -36,6 +36,9 @@ const App = () => {
         <SafeAreaView>
           <Layout>
             <assets.Logo />
+            <TextInput placeholder="Email" />
+            <TextInput placeholder="passowrd" />
+            <Button title="Se connecter" />
           </Layout>
         </SafeAreaView>
       </ThemeProvider>

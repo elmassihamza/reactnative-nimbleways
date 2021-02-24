@@ -18,7 +18,9 @@ export const defaultTheme: DefaultTheme = {
     xxl: 64,
   },
   colors: {
-    primary: '#11111',
-    secondary: '#22222',
+    primary: '#003D7C',
+    secondary: '#00B2BB',
+    border: '#BFCEDE',
+    white: '#FFF',
   },
 };
