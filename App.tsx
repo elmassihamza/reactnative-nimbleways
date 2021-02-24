@@ -8,81 +8,32 @@
  * @format
  */
 
-import React, {useState} from 'react';
-import {SafeAreaView, StyleSheet, StatusBar} from 'react-native';
-
-import {Colors} from 'react-native/Libraries/NewAppScreen';
-
-import assets from './src/assets';
+import React from 'react';
+import {StatusBar} from 'react-native';
 import {ThemeProvider} from 'styled-components';
 import {defaultTheme} from './src/themes/default';
-import {Button, Layout, TextInput} from './src/components';
+import 'react-native-gesture-handler';
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
+import Login from './src/screens/login';
+import Home from './src/screens/home';
+import {ContextProvider} from './src/contexts/dataContext';
+import Entry from './src/screens';
 
-declare const global: {HermesInternal: null | {}};
-
+const Stack = createStackNavigator();
 const App = () => {
-  const [value, setValue] = useState('ddsdfsfdsfdfsdfd');
-  const handleChange = (val) => {
-    if (value.length < 10) {
-      setTimeout(() => {
-        setValue(val);
-      }, 1000);
-    }
-  };
   return (
     <>
       <ThemeProvider theme={defaultTheme}>
         <StatusBar barStyle="dark-content" />
-        <SafeAreaView>
-          <Layout>
-            <assets.Logo />
-            <TextInput placeholder="Email" />
-            <TextInput placeholder="passowrd" />
-            <Button title="Se connecter" />
-          </Layout>
-        </SafeAreaView>
+        <ContextProvider>
+          <NavigationContainer>
+            <Entry />
+          </NavigationContainer>
+        </ContextProvider>
       </ThemeProvider>
     </>
   );
 };
-
-const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: Colors.lighter,
-  },
-  engine: {
-    position: 'absolute',
-    right: 0,
-  },
-  body: {
-    backgroundColor: Colors.white,
-  },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: Colors.black,
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-    color: Colors.dark,
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-  footer: {
-    color: Colors.dark,
-    fontSize: 12,
-    fontWeight: '600',
-    padding: 4,
-    paddingRight: 12,
-    textAlign: 'right',
-  },
-});
 
 export default App;
